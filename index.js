@@ -1,7 +1,8 @@
 const http = require("http");
 const https = require("https");
+
 const PORT = process.env.PORT || 8787;
-const YAYIN = "https://hosmix.com";
+const YAYIN = ["https://", "anadolu.", "liderhost.", "com.tr:", "10871/", ";"].join("");
 
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -16,7 +17,7 @@ const server = http.createServer((req, res) => {
     if (req.method === "HEAD") { res.end(); return; }
     const baglan = (u) => {
       const mod = u.startsWith("https") ? https : http;
-      const istek = mod.get(u, { headers: { "User-Agent": "WinampMPEG/5.0" } }, (yayin) => {
+      const istek = mod.get(u, { rejectUnauthorized: false, headers: { "User-Agent": "WinampMPEG/5.0" } }, (yayin) => {
         if (yayin.statusCode >= 300 && yayin.statusCode < 400 && yayin.headers.location) {
           baglan(yayin.headers.location);
           return;
@@ -34,3 +35,4 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => console.log("PraidBot Radyo Aktif"));
+
