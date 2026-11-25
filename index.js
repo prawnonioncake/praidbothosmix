@@ -6,7 +6,7 @@ const YAYIN = ["https://", "anadolu.", "liderhost.", "com.tr:", "10871/", ";"].j
 
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  if (req.url.startsWith("/icecast.audio") || req.url.startsWith("/mp3")) {
+  if (req.url.startsWith("/stream.mp3") || req.url.startsWith("/icecast.audio") || req.url.startsWith("/mp3")) {
     res.writeHead(200, {
       "Content-Type": "audio/mpeg",
       "Cache-Control": "no-cache",
@@ -31,8 +31,9 @@ const server = http.createServer((req, res) => {
     return;
   }
   res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-  res.end(`<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>PraidBot HosMix Radyo</title><style>body{margin:0;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif}audio{width:90%;max-width:400px;margin-top:20px}</style></head><body><h2>PraidBot HosMix Radyo</h2><audio controls autoplay src="/icecast.audio"></audio></body></html>`);
+  res.end('<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>PraidBot Radyo</title></head><body style="background:#111;color:#fff;font-family:sans-serif;text-align:center;padding-top:50px"><h2>PraidBot HosMix Radyo</h2><audio controls autoplay src="/stream.mp3"></audio></body></html>');
 });
 
 server.listen(PORT, () => console.log("PraidBot Radyo Aktif"));
+
 
