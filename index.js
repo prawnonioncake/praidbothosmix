@@ -7,7 +7,7 @@ const YAYIN = ["https://", "anadolu.", "liderhost.", "com.tr:", "10871/", ";"].j
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  if (req.url.startsWith("/stream.mp3") || req.url.startsWith("/icecast.audio")) {
+  if (req.url.startsWith("/icecast.audio") || req.url.startsWith("/icecast.audio")) {
     res.writeHead(200, {
       "Content-Type": "audio/mpeg",
       "Cache-Control": "no-cache, no-store",
