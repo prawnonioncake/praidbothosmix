@@ -2,7 +2,7 @@ const http = require("http");
 const https = require("https");
 
 const PORT = process.env.PORT || 8787;
-const YAYIN = "https://liderhost.com.tr;";
+const YAYIN = ["https://", "anadolu.", "liderhost.", "com.tr:", "10871/", ";"].join("");
 
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
